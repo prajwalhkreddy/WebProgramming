@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="author" content="Prajwal Halasahally KeshavaReddy">
+<meta name="about" content="Profile details and information about University Of Texas at Dallas">
+<meta name="keywords" content="prajwal, halasahally,java developer,utd,university,dallas,bangalore,texas">
+<link rel="stylesheet" type="text/css" href="firststyle.css">
+<style>
+#myBox {width:250px;height:250px;padding:10px;border:1px solid #aaaaaa;}
+</style>
+<script src = "prajscripts.js"></script>
+<title>Welcome to the Homepage of Prajwal</title>
+</head>
+<body>
+	<header>
+				<section class="logo">
+					<img src="./images/ut-dallas-logo.jpg" alt="utdallas logo" width="250" height="100">
+				</section>
+				<h1>PRAJWAL HALASAHALLY KESHAVAREDDY</h1>
+	</header>
+
+<nav>
+			<h4>
+				<a href="index.html">HOME</a>|
+				<a href="edu.html">EDUCATION</a>|
+				<a href="projects.html">PROJECTS</a>|
+				<a href="aboututd.html">ABOUT UTD</a>|
+				<a href="http://cs.utdallas.edu">UTD CS DEPT</a>|
+				<a href="assign.html">ASSIGNMENT SPECIFIC</a>|
+				
+			</h4>
+</nav>
+
+<section class="geo">
+	Click to see your location on map<br> </br>
+<button onclick = "myGeoLocation()"> My Location </button>
+<div id = "display_map"> </div>
+</section>
+
+
+<section class="drag">
+<p> This is a sample image. Drag and drop it into the box</p>
+<div id="myBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<img id = "myImage" src="./images/socialmedia.jpg"  draggable = "true" ondragstart = "drag(event)" height="250" width="250"> <br>
+
+</section>
+
+
+<section class="imgmap">
+	<p>The following image displays the Social Media Sites along with the working of image map</p>
+<img src="./images/socialmedia.jpg" alt="" usemap="#map" />
+<map name="map">
+    <area shape="rect" coords="274, 114, 314, 156"  href="http://facebook.com" alt="facebook"/>
+    <area shape="rect" coords="227, 58, 267, 100" href="http://youtube.com" alt="Youtube"/>
+    <area shape="rect" coords="196, 102, 229, 153" href="http://tumblr.com" alt="Tumblr"/>
+    <area shape="rect" coords="150, 44, 205, 80" href="http://facebook.com" alt="Facebook"/>
+    <area shape="rect" coords="115, 101, 172, 129" href="http://googleplus.com" alt="Google Plus"/>
+    <area shape="rect" coords="65, 68, 129, 86" href="http://instagram.com" alt="Instagram"/>
+    <area shape="rect" coords="39, 123, 104, 147" href="http://twitter.com" alt="Twitter" />
+</map>
+
+</section>
+
+<section class="storage">
+<p id = "localStorage">  Click Set/Get to test the local storage APIs </p>
+<button onclick = "setStoredValues()"> Set </button> <button onclick = "getStoredValues()"> Get </button>
+</section>
+
+<footer>
+			Drop me a message <a href="form.html">Click here</a>
+</footer>
+
+</body>
+
+
+</html>

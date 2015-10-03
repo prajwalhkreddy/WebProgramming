@@ -1,0 +1,201 @@
+body{
+	  	background-color: lightgray;
+	  }
+section{
+	  	margin:auto;
+		
+	  }
+
+
+header {
+	    background-color:Chocolate ;
+	    color:white;
+	    text-align:center;
+	    padding:15px;
+	    	 
+		}
+
+section.logo {
+		float: left;
+		position: absolute;
+		top: 11px;
+		margin-left: 20px;
+	}
+
+
+footer {
+    	background-color:SeaGreen;
+    	color:white;
+   		clear:both;
+    	text-align:center;
+    	padding:20px;
+    	margin-top: 20px;
+    	
+    	 	 
+	}
+nav {
+    	background-color:SeaGreen ;
+    	width:1000px;
+    	height:30px;    
+    	text-align:center;
+    	color: white;
+    	margin: auto;
+    	
+	}
+img.prajwal{
+	  	float:left;
+	  	position: relative;
+	  }
+
+#left{
+		padding-top: 10px;
+		padding-left: 320px;
+	}
+#profile{
+		padding-left: 320px;
+		text-align: left;
+	}
+section.summary{
+	  	width:1000px;
+	  	height:500px;
+	  	margin-top: 10px;
+	  	background-color: whiteSmoke;
+	  	position: relative;
+	  	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+		padding-left:15px;
+	  	padding-top: 10px;
+	  }
+#degreeTable {
+		width: 1000px;
+	}
+#degreeTable td, #degreeTable th {
+		padding: 5px;
+		color: #333;
+	}
+#degreeTable thead {
+		font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+		padding: 10px;
+		text-align: center;
+		background-color: DarkGray;
+		
+	}
+#degreeTable th {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+		line-height: 20px;
+		font-style: normal;
+		font-weight: normal;
+		text-align: center;
+	}
+#degreeTable td {
+		line-height: 20px;
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 14px;
+		border-bottom: 1px solid #fff;
+		border-top: 1px solid #fff;
+		text-align: center;
+	}
+section.utd{
+	  	margin-top: 10px;
+	  	width:1000px;
+	  }	
+section.projects{
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+	  	width:1000px;
+	  	height:100px;
+	  	margin-top: 10px;
+	  	background-color: DarkGray;
+	  	text-align: center;
+	  	position: relative;
+	  }
+section.form{
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+	  	width:1000px;
+	  	height:600px;
+	  	margin-top: 10px;
+	  	background-color: whiteSmoke;
+	  	position: relative;
+	  	padding-left:15px;
+	  	padding-top: 10px;
+	  }
+section.about1{
+	  	width:1000px;
+	  	height:140px;
+	  	margin-top: 10px;
+	  	background-color: whiteSmoke;
+	  	position: relative;
+	  	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+		padding-left:15px;
+	  	padding-top: 10px;
+	  }
+section.about2{
+	  	width:1000px;
+	  	height:270px;
+	  	margin-top: 10px;
+	  	background-color: whiteSmoke;
+	  	position: relative;
+	  	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+		padding-left:15px;
+	  	padding-top: 10px;
+	  }
+section.geo{
+	  	width:1000px;
+	  	height:600px;
+	  	margin-top: 10px;
+	  	background-color: whiteSmoke;
+	  	position: relative;
+	  	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+		padding-left:15px;
+	  	padding-top: 10px;
+	  }
+section.drag{
+	  	width:1000px;
+	  	height:600px;
+	  	margin-top: 10px;
+	  	background-color: whiteSmoke;
+	  	position: relative;
+	  	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+		padding-left:15px;
+	  	padding-top: 10px;
+	  }
+section.imgmap{
+	  	width:1000px;
+	  	height:300px;
+	  	margin-top: 10px;
+	  	background-color: whiteSmoke;
+	  	position: relative;
+	  	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+		padding-left:15px;
+	  	padding-top: 10px;
+	  }
+section.storage{
+	  	width:1000px;
+	  	height:100px;
+	  	margin-top: 10px;
+	  	background-color: whiteSmoke;
+	  	position: relative;
+	  	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+		padding-left:15px;
+	  	padding-top: 10px;
+	  }
+section.thankyou{
+	  	width:1000px;
+	  	height:50px;
+	  	margin-top: 10px;
+	  	background-color: whiteSmoke;
+	  	position: relative;
+	  	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+		padding-left:15px;
+	  	padding-top: 10px;
+	  	text-align: center;
+	  }
