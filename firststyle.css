@@ -199,3 +199,27 @@ section.thankyou{
 	  	padding-top: 10px;
 	  	text-align: center;
 	  }
+section.hide{
+	  	width:1000px;
+	  	height:450px;
+	  	margin-top: 10px;
+	  	background-color: whiteSmoke;
+	  	position: relative;
+	  	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+		padding-left:15px;
+	  	padding-top: 10px;
+	  	text-align: center;
+	  }
+section.fade{
+	  	width:1000px;
+	  	height:350px;
+	  	margin-top: 10px;
+	  	background-color: whiteSmoke;
+	  	position: relative;
+	  	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+		padding-left:20px;
+	  	padding-top: 10px;
+	  	
+	  }

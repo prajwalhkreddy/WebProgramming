@@ -5,7 +5,27 @@
 <meta name="about" content="Profile details and information about University Of Texas at Dallas">
 <meta name="keywords" content="prajwal, halasahally,java developer,utd,university,dallas,bangalore,texas">
 <link rel="stylesheet" type="text/css" href="firststyle.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src = "prajscripts.js"> </script>
+<script>
+$(document).ready(function(){
+	$("#hide").click(function(){
+		$("#jeepimg").hide();
+		});
+	$("#show").click(function(){
+		$("#jeepimg").show();
+	});
+	$("#toggle").click(function(){
+		$("#jeepimg").toggle();
+	});
+});
+
+$(document).ready(function(){
+	$()
+})
+
+</script>
+
 <title>Welcome to the Homepage of Prajwal</title>
 </head>
 <body>
@@ -28,6 +48,25 @@
 				
 			</h4>
 </nav>
+<section class="hide">
+<p>Hide/Show/Toggle Demo</p>
+<img id = "jeepimg" src="./images/jeep.jpg" height="250" width="250"> <br>
+<button id="hide">Hide</button>
+<button id="show">Show</button>
+<button id="toggle">Toggle</button>
+
+</section>
+
+<section class="fade">
+<p>Double Clink Event and Fade Options</p>
+<img id = "bmwlogo" src="./images/bmwlogo.jpg" height="250" width="250"> <br>
+<button id="fadein">Double Click to Fade In</button>
+<button id="fadeout">Double Click to Fade Out</button>
+<button id="fadeto">Double CLick to Fade To</button>
+<button id="fadetoggle">Double Click to Toggle Fade</button>
+
+
+</section>
 
 
 <footer>
