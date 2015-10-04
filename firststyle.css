@@ -213,7 +213,52 @@ section.hide{
 	  }
 section.fade{
 	  	width:1000px;
-	  	height:350px;
+	  	height:550px;
+	  	margin-top: 10px;
+	  	background-color: whiteSmoke;
+	  	position: relative;
+	  	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+		padding-left:20px;
+	  	padding-top: 10px;
+	  	
+	  }
+section.bmwcar1{
+	width:300px;
+		position: absolute;
+		top:350px;
+		left:20px;
+		display:none;
+}
+section.bmwcar2{
+	width:300px;
+		position: absolute;
+		top:350px;
+		left:350px;
+		display:none;
+}
+section.bmwcar3{
+	width:300px;
+		position: absolute;
+		top:350px;
+		right:70px;
+		display:none;
+}
+section.animate{
+	  	width:1000px;
+	  	height:550px;
+	  	margin-top: 10px;
+	  	background-color: whiteSmoke;
+	  	position: relative;
+	  	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+		padding-left:20px;
+	  	padding-top: 10px;
+	  	
+	  }
+section.chain{
+	  	width:1000px;
+	  	height:550px;
 	  	margin-top: 10px;
 	  	background-color: whiteSmoke;
 	  	position: relative;

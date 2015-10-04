@@ -21,8 +21,59 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-	$()
-})
+	$("#bmwlogo").dblclick(function(){
+		$(".bmwcar1").fadeIn();
+		$(".bmwcar2").fadeIn("slow");
+		$(".bmwcar3").fadeIn(3000);
+		});
+	$("#fadeout").dblclick(function(){
+		$(".bmwcar1").fadeOut();
+		$(".bmwcar2").fadeOut("slow");
+		$(".bmwcar3").fadeOut(3000);
+	});
+	$("#fadetoggle").dblclick(function(){
+		$(".bmwcar1").fadeToggle();
+		$(".bmwcar2").fadeToggle("slow");
+		$(".bmwcar3").fadeToggle(3000);
+	});
+	$("#fadeto").dblclick(function(){
+		$(".bmwcar1").fadeTo("slow", 0.15);
+		$(".bmwcar2").fadeTo("slow", 0.4);
+		$(".bmwcar3").fadeTo("slow", 0.7);
+	});
+});
+
+$(document).ready(function(){
+	$("#beemer1").mouseenter(function(){
+		$("#beemer1").animate({height:'450px',width:'450px',opacity:'1'},"fast");
+	});
+	$("#beemer1").mouseleave("slow",function(){
+		$("#beemer1").animate({height:'150px',width:'150px',opacity:'1'});
+	});
+
+});
+
+$(document).ready(function(){
+	 $("#txtchain").keypress(function(){
+		  	if(event.keyCode==102){
+		    	$("#beemer2").fadeOut("1000").fadeIn(3000).fadeTo("slow", 0.5);	
+		    }
+	});
+
+	 $("#txtchain").keydown(function(){
+		  	if(event.keyCode==65){
+		    	$("#beemer2").animate({height:'450px',width:'450px',opacity:'0.4'},"slow").animate({height:'50px',width:'50px',opacity:'0.8'}).animate({height:'150px',width:'150px',opacity:'1.0'},"slow");
+		   	}
+	});
+
+	 $("#txtchain").keyup(function(){
+			if(event.keyCode==83){
+				$("#beemer2").stop(true,false);
+		   	}
+		});
+});
+
+
 
 </script>
 
@@ -48,24 +99,43 @@ $(document).ready(function(){
 				
 			</h4>
 </nav>
+
 <section class="hide">
 <p>Hide/Show/Toggle Demo</p>
 <img id = "jeepimg" src="./images/jeep.jpg" height="250" width="250"> <br>
 <button id="hide">Hide</button>
 <button id="show">Show</button>
 <button id="toggle">Toggle</button>
-
 </section>
 
 <section class="fade">
-<p>Double Clink Event and Fade Options</p>
+<p>Double Clink Event and Fade Options | Double Click on logo to Fade In</p>
 <img id = "bmwlogo" src="./images/bmwlogo.jpg" height="250" width="250"> <br>
-<button id="fadein">Double Click to Fade In</button>
+
 <button id="fadeout">Double Click to Fade Out</button>
 <button id="fadeto">Double CLick to Fade To</button>
-<button id="fadetoggle">Double Click to Toggle Fade</button>
+<button id="fadetoggle">Double Click to Toggle Fade</button><br>
+<br>
+<section class="bmwcar1">
+	<img id = "bmw1" src="./images/bmw1.jpg" height="150" width="150">
+</section>
+<section class="bmwcar2">
+	<img id = "bmw2" src="./images/bmw2.jpg" height="150" width="150">
+</section>
+<section class="bmwcar3">
+	<img id = "bmw3" src="./images/bmw3.jpg" height="150" width="150">
+</section>
+</section>
 
+<section class="animate">
+<p>Mouse Enter and Leave with Animation | Move Mouse on Car to view a large size image</p>
+<img id = "beemer1" src="./images/bmw1.jpg" height="150" width="150"> <br>
+</section>
 
+<section class="chain">
+<p>Chaining and Key Press/Up/Down | Enter 'f' for fading, 'a' for animation and 's' to stop</p>
+<img id = "beemer2" src="./images/bmw2.jpg" height="150" width="150" > <br>
+<input type="text" size="10" id="txtchain">
 </section>
 
 
