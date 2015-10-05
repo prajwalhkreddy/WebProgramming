@@ -54,6 +54,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
+	var content="";
 	 $("#txtchain").keypress(function(){
 		  	if(event.keyCode==102){
 		    	$("#beemer2").fadeOut("1000").fadeIn(3000).fadeTo("slow", 0.5);	
@@ -71,10 +72,50 @@ $(document).ready(function(){
 				$("#beemer2").stop(true,false);
 		   	}
 		});
+	 $("#txtval").blur(function(){
+   		 content= $(this).val();
+			$(this).val("");
+	
+  		});
+     $("#txtval").change(function(){
+   		 content = $(this).val();
+    	 alert("The text you entered is  " + content + "\n This value will be restored when you click on the text box again");
+	
+  });
+  	$("#txtval").focus(function(){
+    	$(this).val(content);
+	
+  });
+  	$("#addrow").click(function(){
+  		//alert("Clicked");
+	var row = "<tr>	<td contenteditable='true'></td> <td contenteditable='true'></td> <td contenteditable='true'></td><td contenteditable='true'></td> 	<td> <button class = 'tbutton2' > Delete </button> </td> </tr>" ;
+    $("#degreeTable").append(row);
+	
+  });
+
+  	$(".tbutton").click(function(){
+  		//alert("Clicked");
+   		 $(this).closest('tr').remove();
+    
+	});
+
+
 });
 
+$(document).on('click', '.tbutton2', function(){ 
+         $(this).closest('tr').remove();
+ });
 
+$(function() {
+      $('td').mouseover(function() {
+      	if (event.altKey) {
+         $(this).addClass('seltd');
+     	}
 
+      }).mouseout(function() {
+      	$(this).removeClass('seltd');
+      })   
+      });
 </script>
 
 <title>Welcome to the Homepage of Prajwal</title>
@@ -96,6 +137,7 @@ $(document).ready(function(){
 				<a href="http://cs.utdallas.edu">UTD CS DEPT</a>|
 				<a href="assign.html">ASSIGNMENT SPECIFIC</a>|
 				<a href="assign2.html">ASSIGNMENT 2</a>|
+				<a href="shopcart.html">SHOPPING CART</a>|
 				
 			</h4>
 </nav>
@@ -136,6 +178,55 @@ $(document).ready(function(){
 <p>Chaining and Key Press/Up/Down | Enter 'f' for fading, 'a' for animation and 's' to stop</p>
 <img id = "beemer2" src="./images/bmw2.jpg" height="150" width="150" > <br>
 <input type="text" size="10" id="txtchain">
+</section>
+
+<section class="blur">
+<p>Blur, Change and Focus</p>
+<p>Enter a text value</p>
+<input type="text" size="20" id="txtval"> <br>
+</section>
+
+<section class="table">
+<table id="degreeTable" border="3" >
+<tr class = "trow"> 
+<th class ="tdata"> First Name </th>
+<th class ="tdata"> Last Name </th>
+<th class ="tdata"> Email Address </th>
+<th class ="tdata"> Telephone </th>
+<th> Delete </button> </th>
+</tr>
+<tr>
+<td contenteditable='true'> Prajwal </td>
+<td contenteditable='true'> Halasahally KeshavaReddy </td>
+<td contenteditable='true'> prajwal19@gmail.com </td>
+<td contenteditable='true'> 2146807743 </td>
+<td> <button class ="tbutton" > Delete </button> </td>
+</tr>
+<tr>
+<td contenteditable='true'> Nikhil </td>
+<td contenteditable='true'> Bharadwaj </td>
+<td contenteditable='true'> nikstvp@gmail.com </td>
+<td contenteditable='true'> 1234567890 </td>
+<td> <button class ="tbutton" > Delete </button> </td>
+</tr>
+<tr>
+<td contenteditable='true'> Madhur </td>
+<td contenteditable='true'> Kamalapurkar </td>
+<td contenteditable='true'> kmadhur21@gmail.com </td>
+<td contenteditable='true'> 0543219876 </td>
+<td> <button class ="tbutton" > Delete </button> </td>
+</tr>
+<tr>
+<td contenteditable='true'> Akash </td>
+<td contenteditable='true'> Deep </td>
+<td contenteditable='true'> akashbruce@gmail.com </td>
+<td contenteditable='true'> 0543214567 </td>
+<td> <button class ="tbutton" > Delete </button> </td>
+</tr>
+</table>
+<br>
+<button id ="addrow" > Add Row </button>
+
 </section>
 
 

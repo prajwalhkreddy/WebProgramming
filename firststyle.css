@@ -71,7 +71,7 @@ section.summary{
 	}
 #degreeTable td, #degreeTable th {
 		padding: 5px;
-		color: #333;
+		
 	}
 #degreeTable thead {
 		font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -259,6 +259,46 @@ section.animate{
 section.chain{
 	  	width:1000px;
 	  	height:550px;
+	  	margin-top: 10px;
+	  	background-color: whiteSmoke;
+	  	position: relative;
+	  	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+		padding-left:20px;
+	  	padding-top: 10px;
+	  	
+	  }
+section.blur{
+	  	width:1000px;
+	  	height:150px;
+	  	margin-top: 10px;
+	  	background-color: whiteSmoke;
+	  	position: relative;
+	  	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+		padding-left:20px;
+	  	padding-top: 10px;
+	  	
+	  }
+section.table{
+	  	width:1020px;
+	  	height:300px;
+	  	margin-top: 10px;
+	  	background-color: whiteSmoke;
+	  	position: relative;
+	  	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 17px;
+		padding-left:20px;
+	  	padding-top: 10px;
+	  	
+	  }
+.seltd {
+     background-color: blue;
+      color:red;
+   }
+section.shopcart{
+	  	width:1000px;
+	  	height:150px;
 	  	margin-top: 10px;
 	  	background-color: whiteSmoke;
 	  	position: relative;
