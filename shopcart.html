@@ -5,10 +5,99 @@
 <meta name="about" content="Profile details and information about University Of Texas at Dallas">
 <meta name="keywords" content="prajwal, halasahally,java developer,utd,university,dallas,bangalore,texas">
 <link rel="stylesheet" type="text/css" href="firststyle.css">
+<script src = "jquery-2.1.1.js"> </script>
 <script src = "prajscripts.js"> </script>
+<script src = "simpleCart.js"> </script>
+<script>
+simpleCart({
+  
+  
+	// array representing the format and columns of the cart,
+	// see the cart columns documentation
+	cartColumns: [
+		{ attr: "name", label: "Name"},
+		{ view: "currency", attr: "price", label: "Price"},
+		{ view: "decrement", label: false},
+		{ attr: "quantity", label: "Qty"},
+		{ view: "increment", label: false},
+		{ view: "currency", attr: "total", label: "SubTotal" },
+		{ view: "remove", text: "Remove", label: "Remove"}
+	],
+ 
+    checkout: { 
+        type: "GoogleCheckout" , 
+        marchantID: "XXXXXXXXX" ,
+
+        // http method for form, "POST" or "GET", default is "POST"
+        method: "POST" 
+    } ,
+
+
+	// "div" or "table" - builds the cart as a 
+	// table or collection of divs
+	cartStyle: "table", 
+
+	// how simpleCart should checkout, see the 
+	// checkout reference for more info 
+    
+
+
+
+	// set the currency, see the currency 
+	// reference for more info
+	currency: "USD",
+
+	// collection of arbitrary data you may want to store 
+	// with the cart, such as customer info
+	data: {},
+
+	// set the cart langauge 
+	// (may be used for checkout)
+	language: "english-us",
+
+	// array of item fields that will not be 
+	// sent to checkout
+	excludeFromCheckout: [],
+
+	// custom function to add shipping cost
+	shippingCustom: null,
+
+	// flat rate shipping option
+	shippingFlatRate: 0,
+
+	// added shipping based on this value 
+	// multiplied by the cart quantity
+	shippingQuantityRate: 0,
+
+	// added shipping based on this value 
+	// multiplied by the cart subtotal
+	shippingTotalRate: 0,
+
+	// tax rate applied to cart subtotal
+	taxRate: 2,
+
+	// true if tax should be applied to shipping
+	taxShipping: false,
+
+	// event callbacks 
+	beforeAdd			: null,
+	afterAdd			: null,
+	load				: null,
+	beforeSave		: null,
+	afterSave			: null,
+	update			: null,
+	ready			: null,
+	checkoutSuccess	: null,
+	checkoutFail		: null,
+	beforeCheckout		: null,
+        beforeRemove           : null
+});
+
+ </script>
+
 <title>Welcome to the Homepage of Prajwal</title>
 </head>
-<body>
+<body onload="init()">
 	<header>
 				<section class="logo">
 					<img src="./images/ut-dallas-logo.jpg" alt="utdallas logo" width="250" height="100">
@@ -30,6 +119,27 @@
 			</h4>
 </nav>
 <section class="shopcart">
+	<p> Click on Add to Cart for Sample Shopping Cart Demo</p>
+<div class="simpleCart_shelfItem">
+  <h2 class="carhead"> BMW X5 </h2>
+  <img id = "bmwimg" src="./images/bmw1.jpg" height="150" width="150">
+<p>  <input type="text" size="22" class="item_Quantity" placeholder="Enter Quantity and Add to Cart"><br>
+  <span class="item_price">$48000</span><br>
+  <input type="button" class="item_add" href="javascript:;" value="Add to Cart"/> </p>
+</div>
+
+<div class="simpleCart_shelfItem">
+  <h2 class="carhead"> Grand Cherokee</h2>
+  <img id = "jeepimg" src="./images/jeep.jpg" height="150" width="150">
+<p>  <input type="text" class="item_Quantity" size="22" placeholder="Enter Quantity and Add to Cart"><br>
+  <span class="item_price">$34000</span><br>
+  <input type="button" class="item_add" href="javascript:;" value="Add to Cart"/> </p>
+</div>
+
+<span class="simpleCart_quantity"></span> car(s) at - <span class="simpleCart_total"></span>
+<p>Total Cars you have purchased:</p> <div class="simpleCart_quantity">  </div>
+<button class="simpleCart_empty"> Empty Cart</button>
+
 
 
 </section>
