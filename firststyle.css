@@ -308,3 +308,14 @@ section.shopcart{
 	  	padding-top: 10px;
 	  	
 	  }
+section.rect{
+	  	width:1000px;
+	  	height:300px;
+	  	margin-top: 10px;
+	  	background-color: whiteSmoke;
+	  	position: relative;
+		padding-left:20px;
+	  	padding-top: 10px;
+	  	text-align:center;
+	  	
+	  }
