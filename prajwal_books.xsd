@@ -5,7 +5,55 @@
 <xs:element name ="books">
 <xs:complexType>
 <xs:sequence>
-
+<xs:element name="author_info">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="author_name">
+			<xs:complexType>
+				<xs:sequence>
+				<xs:element name="last_name">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+					<xs:pattern value="([A-Z])([a-z])*"/>
+					</xs:restriction>
+				</xs:simpleType>
+				</xs:element>
+				<xs:element name="middle_initial">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+					<xs:pattern value="([A-Z])([a-z])*"/>
+					</xs:restriction>
+				</xs:simpleType>
+				</xs:element>
+				<xs:element name="first_name">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+					<xs:pattern value="([A-Z])([a-z])*"/>
+					</xs:restriction>
+				</xs:simpleType>
+				</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+			</xs:element>
+			<xs:element name="date_of_birth">
+				<xs:simpleType>
+					<xs:restriction base="xs:date">
+					<xs:minInclusive value="1900-01-01"/>
+					<xs:maxInclusive value="2015-10-31"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="highest_education">
+				<xs:simpleType>
+						<xs:restriction base="xs:string">
+						<xs:enumeration value="BA"/>
+						<xs:enumeration value="BS"/>
+						<xs:enumeration value="MS"/>
+						<xs:enumeration value="MBA"/>
+						<xs:enumeration value="PHD"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
 
 
 </xs:sequence>
