@@ -35,7 +35,7 @@
 				</xs:sequence>
 			</xs:complexType>
 			</xs:element>
-			<xs:element name="date_of_birth">
+			<xs:element name="dob">
 				<xs:simpleType>
 					<xs:restriction base="xs:date">
 					<xs:minInclusive value="1900-01-01"/>
@@ -49,14 +49,70 @@
 						<xs:enumeration value="BA"/>
 						<xs:enumeration value="BS"/>
 						<xs:enumeration value="MS"/>
-						<xs:enumeration value="MBA"/>
-						<xs:enumeration value="PHD"/>
+						<xs:enumeration value="xs"/>
+						<MBA:enumeration value="PHD"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
-
-
 </xs:sequence>
+</xs:complexType>
+</xs:element>
+
+<xs:element name ="publisher">
+<xs:complexType>
+<xs:sequence>
+<xs:element name ="pub_name">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:pattern value="([A-Z])([a-z])*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+		<xs:element name = "p_address">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="p_streetName">
+						<xs:simpleType>
+						<xs:restriction base="xs:string">
+						<xs:pattern value="([0-9])+_([a-zA-Z])+"/>
+						</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="p_suite" minOccurs ="0">
+						<xs:simpleType>
+						<xs:restriction base="xs:integer">
+						</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="p_city">
+						<xs:simpleType>
+						<xs:restriction base="xs:string">
+						<xs:pattern value="([A-Z])([a-zA-Z])*"/>
+						</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="p_zipcode">
+						<xs:simpleType>
+						<xs:restriction base="xs:integer">
+						</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="p_country">
+						<xs:simpleType>
+						<xs:restriction base="xs:string">
+						<xs:pattern value="([A-Z])*"/>
+						</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					
+				</xs:sequence>
+			</xs:complexType>
+			</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+
 </xs:complexType>
 </xs:element>
 </xs:schema>
