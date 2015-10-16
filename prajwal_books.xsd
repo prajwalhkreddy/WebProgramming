@@ -21,7 +21,7 @@
 				<xs:element name="middle_initial">
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
-					<xs:pattern value="([A-Z])([a-z])*"/>
+					<xs:pattern value="([A-Z])\."/>
 					</xs:restriction>
 				</xs:simpleType>
 				</xs:element>
@@ -39,7 +39,7 @@
 				<xs:simpleType>
 					<xs:restriction base="xs:date">
 					<xs:minInclusive value="1900-01-01"/>
-					<xs:maxInclusive value="2015-10-31"/>
+					<xs:maxIncl	usive value="2015-10-31"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
@@ -49,8 +49,8 @@
 						<xs:enumeration value="BA"/>
 						<xs:enumeration value="BS"/>
 						<xs:enumeration value="MS"/>
-						<xs:enumeration value="xs"/>
-						<MBA:enumeration value="PHD"/>
+						<xs:enumeration value="MBA"/>
+						<xs:enumeration value="PHD"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
@@ -58,7 +58,7 @@
 </xs:complexType>
 </xs:element>
 
-<xs:element name ="publisher">
+<xs:element name ="pub_info">
 <xs:complexType>
 <xs:sequence>
 <xs:element name ="pub_name">
@@ -94,6 +94,8 @@
 					<xs:element name="p_zipcode">
 						<xs:simpleType>
 						<xs:restriction base="xs:integer">
+							<xs:minInclusive value="11111"/>
+							<xs:maxInclusive value="99999"/>
 						</xs:restriction>
 						</xs:simpleType>
 					</xs:element>
@@ -118,6 +120,7 @@
 			<xs:simpleType>
 			<xs:restriction base="xs:string">
 			<xs:pattern value="([A-Z])([a-z])*"/>
+			<xs:maxLength value="100"/>
 			</xs:restriction>
 			</xs:simpleType>
 		</xs:element>
@@ -134,10 +137,7 @@
             <xs:extension base="xs:decimal">
                 <xs:attribute name="currency">
                     <xs:simpleType>
-                        <xs:restriction base="xs:string">
-                            <xs:enumeration value="RS" />
-                            <xs:enumeration value="EUR" />
-                            <xs:enumeration value="USD" />
+                        <xs:restriction base="xs:currency">
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:attribute>
@@ -145,10 +145,20 @@
         </xs:simpleContent>
 		</xs:complexType>
 		</xs:element>
+		<xs:element name="time_in_circ">
+				<xs:simpleType>
+					<xs:restriction base="xs:duration">
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		<xs:element ref= "author_info" minOccurs = "1">
+		</xs:element>
+		<xs:element ref= "pub_info">
+		</xs:element>
 </xs:sequence>
 </xs:complexType>
 </xs:element>
-
+</xs:sequence>
 </xs:complexType>
 </xs:element>
 </xs:schema>
