@@ -62,11 +62,11 @@
 <xs:complexType>
 <xs:sequence>
 <xs:element name ="pub_name">
-<xs:simpleType>
-<xs:restriction base="xs:string">
-<xs:pattern value="([A-Z])([a-z])*"/>
-</xs:restriction>
-</xs:simpleType>
+	<xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([A-Z])([a-z])*"/>
+		</xs:restriction>
+	</xs:simpleType>
 </xs:element>
 		<xs:element name = "p_address">
 			<xs:complexType>
@@ -104,14 +104,50 @@
 						</xs:restriction>
 						</xs:simpleType>
 					</xs:element>
-					
 				</xs:sequence>
 			</xs:complexType>
 			</xs:element>
 </xs:sequence>
 </xs:complexType>
 </xs:element>
+
+<xs:element name = "book_info">
+	<xs:complexType>
+		<xs:sequence>
+		<xs:element name="title">
+			<xs:simpleType>
+			<xs:restriction base="xs:string">
+			<xs:pattern value="([A-Z])([a-z])*"/>
+			</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		<xs:element name="ISBN">
+			<xs:simpleType>
+			<xs:restriction base="xs:string">
+			<xs:pattern value="([a-zA-Z0-9]{3}-[a-zA-Z0-9]{3}-[a-zA-Z0-9]{4})"/>
+			</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		<xs:element name="price">
+		<xs:complexType>
+        <xs:simpleContent>
+            <xs:extension base="xs:decimal">
+                <xs:attribute name="currency">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="RS" />
+                            <xs:enumeration value="EUR" />
+                            <xs:enumeration value="USD" />
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+		</xs:complexType>
+		</xs:element>
 </xs:sequence>
+</xs:complexType>
+</xs:element>
 
 </xs:complexType>
 </xs:element>
