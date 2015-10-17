@@ -16,15 +16,12 @@ th, td {
 
 	  <body>
 
-		
-	  <h3> Books Collection (displayed through parsing XML)  </h3>
 	  
-	  <script>
+	  <script onload ="display()">
 		
 		var xmlhttp;
 		var xmlDoc;
 		
-		try {
 			if (window.XMLHttpRequest) {
 				xmlhttp=new XMLHttpRequest();
 			}
@@ -36,20 +33,26 @@ th, td {
 			xmlhttp.setRequestHeader('Content-Type', 'text/xml');
 			xmlhttp.send();
 			xmlDoc=xmlhttp.responseXML; 
-			} catch(e) {
-			console.error(e.message);
-			}
+		
 			
-			
-			document.write('<table id="t01"><tr><th>Title</th><th>ISBN</th><th>Publication Date</th><th>Circulation Time</th><th>Price</th><th>Author</th><th>Publisher</th></tr>');	
+			document.write('<table id="table1"><tr><th>Title</th><th>ISBN</th><th>Price</th><th>Publication Date</th><th>Time in Circulation</th><th>Author Info</th><th>Publisher Info</th></tr>');	
 			var book = xmlDoc.getElementsByTagName("book_info");
+
+			//alert(book.length);
+
 			for (bookno = 0; bookno < book.length; bookno++) {
+
+				//alert(bookno);
 			document.write("<tr><td>");
-			document.write("<b>" + book[bookno].getElementsByTagName("title")[0].childNodes[0].nodeValue + "</b>");
+			document.write(book[bookno].getElementsByTagName("title")[0].childNodes[0].nodeValue + "</b>");
 			document.write("</td><td>"); 
-			document.write(book[bookno].getElementsByTagName("isbn")[0].childNodes[0].nodeValue);
+			document.write(book[bookno].getElementsByTagName("ISBN")[0].childNodes[0].nodeValue);
 			document.write("</td><td>"); 
-			document.write(book[bookno].getElementsByTagName("publication_date")[0].childNodes[0].nodeValue);
+			document.write(book[bookno].getElementsByTagName("price")[0].childNodes[0].nodeValue);
+			document.write("</td><td>"); 
+			document.write(book[bookno].getElementsByTagName("p")[0].childNodes[0].nodeValue);
+			document.write("</td><td>"); 
+			document.write(book[bookno].getElementsByTagName("time_in_circ")[0].childNodes[0].nodeValue);
 			document.write("</td><td>"); 
 			document.write(book[bookno].getElementsByTagName("circulation_time")[0].childNodes[0].nodeValue);
 			document.write("</td><td>"); 
@@ -119,7 +122,7 @@ th, td {
 		document.write("<h3>XPath results with Queries : </h3><br/> ");
 		
 		var Query1 = '/books/bookinfo/price';
-		document.write('<table id="t01"><tr><th>Question</th><th>Result</th></tr><tr><td>Total cost of all the books in the XML document<br/></td><td>');
+		document.write('<table id="table1"><tr><th>Question</th><th>Result</th></tr><tr><td>Total cost of all the books in the XML document<br/></td><td>');
 		var price = xmlDoc.evaluate(Query1, xmlDoc, null, XPathResult.ANY_TYPE, null);
 		var result = price.iterateNext();
 		var total = 0;
@@ -173,7 +176,7 @@ th, td {
 			}
 		}
 		
-		document.write("<table id='t01'><tr><th>Title</th><th>Author FirstName</th></tr><tr>");
+		document.write("<table id='table1'><tr><th>Title</th><th>Author FirstName</th></tr><tr>");
 		
 		for(var count = 0; count < namearray.length / 2; count++) {
 			document.write('<td>' + title[count] + '</td>');
