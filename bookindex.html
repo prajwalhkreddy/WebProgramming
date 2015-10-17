@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<h1>This page displays the content of the XML file</h1>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse:collapse;
+}
+th, td {
+    padding: 5px;
+}
+</style>
+</head>
+
+	  <body>
+
+		
+	  <h3> Books Collection (displayed through parsing XML)  </h3>
+	  
+	  <script>
+		
+		var xmlhttp;
+		var xmlDoc;
+		
+		try {
+			if (window.XMLHttpRequest) {
+				xmlhttp=new XMLHttpRequest();
+			}
+			else {
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+		
+			xmlhttp.open("GET","prajwal_books.xml",false);
+			xmlhttp.setRequestHeader('Content-Type', 'text/xml');
+			xmlhttp.send();
+			xmlDoc=xmlhttp.responseXML; 
+			} catch(e) {
+			console.error(e.message);
+			}
+			
+			
+			document.write('<table id="t01"><tr><th>Title</th><th>ISBN</th><th>Publication Date</th><th>Circulation Time</th><th>Price</th><th>Author</th><th>Publisher</th></tr>');	
+			var book = xmlDoc.getElementsByTagName("book_info");
+			for (bookno = 0; bookno < book.length; bookno++) {
+			document.write("<tr><td>");
+			document.write("<b>" + book[bookno].getElementsByTagName("title")[0].childNodes[0].nodeValue + "</b>");
+			document.write("</td><td>"); 
+			document.write(book[bookno].getElementsByTagName("isbn")[0].childNodes[0].nodeValue);
+			document.write("</td><td>"); 
+			document.write(book[bookno].getElementsByTagName("publication_date")[0].childNodes[0].nodeValue);
+			document.write("</td><td>"); 
+			document.write(book[bookno].getElementsByTagName("circulation_time")[0].childNodes[0].nodeValue);
+			document.write("</td><td>"); 
+			document.write(book[bookno].getElementsByTagName("price")[0].childNodes[0].nodeValue);
+			document.write("</td><td>"); 
+			
+			var author = book[bookno].getElementsByTagName("authorinfo");
+			for (authorno = 0; authorno < author.length; authorno++) {
+				document.write(author[authorno].getElementsByTagName("first_name")[0].childNodes[0].nodeValue);
+				document.write("&nbsp;");
+				
+				if(author[authorno].getElementsByTagName("middle_name")[0] != null) {
+					document.write(author[authorno].getElementsByTagName("middle_name")[0].childNodes[0].nodeValue);
+					document.write("&nbsp;");
+				}
+				
+				document.write(author[authorno].getElementsByTagName("last_name")[0].childNodes[0].nodeValue);
+				document.write("<br/>");
+
+				document.write("DOB: " + author[authorno].getElementsByTagName("date_of_birth")[0].childNodes[0].nodeValue);
+				document.write("<br/>");
+
+				document.write("Education: " + author[authorno].getElementsByTagName("education")[0].childNodes[0].nodeValue);
+				document.write("<br/>");
+
+				document.write("Address: " + author[authorno].getElementsByTagName("street")[0].childNodes[0].nodeValue);
+				document.write(", ");
+				document.write(author[authorno].getElementsByTagName("apt")[0].childNodes[0].nodeValue);
+				document.write(", ");
+				document.write(author[authorno].getElementsByTagName("city")[0].childNodes[0].nodeValue);
+				document.write(", ");
+				document.write(author[authorno].getElementsByTagName("zip_code")[0].childNodes[0].nodeValue);
+				document.write(", ");
+				document.write(author[authorno].getElementsByTagName("country")[0].childNodes[0].nodeValue);
+				document.write("<br/>");    
+
+				if(author.length != 1)
+				  document.write("<br/>");
+				document.write("<br/>");    
+			}
+				
+			document.write("</td><td>")
+			var publisher = book[bookno].getElementsByTagName("publisher");
+
+			for (publisherno = 0; publisherno < publisher.length; publisherno++) {
+				document.write(publisher[publisherno].getElementsByTagName("publisher_name")[0].childNodes[0].nodeValue);
+				document.write("<br/>");
+
+				document.write("Address: " + publisher[publisherno].getElementsByTagName("street")[0].childNodes[0].nodeValue);
+				document.write(", ");
+				document.write(publisher[publisherno].getElementsByTagName("suite_no")[0].childNodes[0].nodeValue);
+				document.write(", ");
+				document.write(publisher[publisherno].getElementsByTagName("city")[0].childNodes[0].nodeValue);
+				document.write(", ");
+				document.write(publisher[publisherno].getElementsByTagName("zip_code")[0].childNodes[0].nodeValue);
+				document.write(", ");
+				document.write(publisher[publisherno].getElementsByTagName("country")[0].childNodes[0].nodeValue);
+				document.write("<br/>");
+			}
+			document.write("</td></tr>");
+		}
+		document.write("</table>");
+		
+		
+		document.write("<br/>");
+		document.write("<br/>");
+		document.write("<h3>XPath results with Queries : </h3><br/> ");
+		
+		var Query1 = '/books/bookinfo/price';
+		document.write('<table id="t01"><tr><th>Question</th><th>Result</th></tr><tr><td>Total cost of all the books in the XML document<br/></td><td>');
+		var price = xmlDoc.evaluate(Query1, xmlDoc, null, XPathResult.ANY_TYPE, null);
+		var result = price.iterateNext();
+		var total = 0;
+		while(result) {
+			total = parseFloat(total) + parseFloat(result.childNodes[0].nodeValue);
+			result = price.iterateNext();
+		}
+		
+		document.write(total.toFixed(2) + '</td></tr>');
+		
+		var Query2 = '/books/bookinfo/authors/authorinfo/name[first_name="Chetan" and last_name="Bhagat"]/ancestor::authors/following-sibling::publisher[publisher_name="TATA Co"]/ancestor::bookinfo/price';
+		
+		document.write('<tr><td><p>Total cost of all the books written by an author for a particular publisher<br/>(Value for Author: Chetan Bhagat and Publisher : TATA Co)</p></td><td>');
+		
+		price = xmlDoc.evaluate(Query2, xmlDoc, null, XPathResult.ANY_TYPE, null);
+		
+		var result = price.iterateNext();
+		var total = 0;
+		while(result) {
+			total = parseFloat(total) + parseFloat(result.childNodes[0].nodeValue);
+			result = price.iterateNext();
+		}
+		
+		document.write(total.toFixed(2) + '</td></tr>');
+		
+		
+		var Query3 = '/books/bookinfo/authors/authorinfo[education="MS" or education="MBA"]/ancestor::authors/ancestor::bookinfo/title|/books/bookinfo/authors/authorinfo[education="MS" or education="MBA"]/name/first_name';
+		
+		document.write('<tr><td><p>Name and book titles of all authors that have a MS or MBA<br/></p></td><td>');
+		
+		var namelist = xmlDoc.evaluate(Query3, xmlDoc, null, XPathResult.ANY_TYPE, null);
+		var namearray = [], node;
+		while(node = namelist.iterateNext()) {
+			namearray.push(node);
+		}
+		
+		
+		var length1 = namearray.length / 2;
+		
+		var c = 0;
+		var firstname = new Array();
+		var title = new Array();
+		for(var count = 0; count < namearray.length; count++) {
+			if(c == 0)
+				title.push(namearray[count].childNodes[0].nodeValue);
+			if(c == 1)
+				firstname.push(namearray[count].childNodes[0].nodeValue);
+			if(count == length1 - 1) {
+				c += 1;
+				length1 = length1 + namearray.length / 2;
+			}
+		}
+		
+		document.write("<table id='t01'><tr><th>Title</th><th>Author FirstName</th></tr><tr>");
+		
+		for(var count = 0; count < namearray.length / 2; count++) {
+			document.write('<td>' + title[count] + '</td>');
+		}
+		
+		document.write("</tr><tr>");
+		for(var count = 0; count < namearray.length / 2; count++) {
+			document.write('<td>' + firstname[count] + '</td>');
+			}
+		
+		document.write('</tr></table></td></tr>');
+		
+		
+		var Query4 = '/books/bookinfo[price<100]/title|/books/bookinfo[price<100]/authors/authorinfo/name/first_name|/books/bookinfo[price<100]/authors/authorinfo/name/last_name|/books/bookinfo[price<100]/publisher/publisher_name';
+		
+		document.write('<tr><td><p>Book title, author names, and publisher name of all the books that cost less than $100<br/></p></td><td>');
+		
+		var namelist = xmlDoc.evaluate(Query4, xmlDoc, null, XPathResult.ANY_TYPE, null);
+		var namearray = [], node;
+		
+		while(node = namelist.iterateNext()) {
+			namearray.push(node);
+		}
+		
+		document.write('<table><tr><th>Title</th><th>Author Name</th><th>Publisher</th></tr>');
+		
+		var length1 = namearray.length / 4;
+		
+		var c=0;
+		var firstname = new Array();
+		var lastname = new Array();
+		var title = new Array();
+		var publ = new Array();
+		for(var count = 0; count < namearray.length; count++) {
+			if(c == 0)
+				lastname.push(namearray[count].childNodes[0].nodeValue);
+			if(c == 1)
+				title.push(namearray[count].childNodes[0].nodeValue);
+			if(c == 2)
+				publ.push(namearray[count].childNodes[0].nodeValue);
+			if(c == 3)
+				firstname.push(namearray[count].childNodes[0].nodeValue);
+			if(count == length1 - 1) {
+				c += 1;
+				length1 = length1 + namearray.length / 4;
+			}
+		}
+		
+		document.write('<tr>');
+		for(var count = 0; count < namearray.length / 4; count++) {
+			document.write('<td>' + lastname[count] + '</td>');
+		}
+		
+		for(var count = 0; count < namearray.length / 4; count++) {
+		document.write('<td>' + publ[count] + ' ');
+			}
+		
+		for(var count = 0; count < namearray.length / 4; count++) {
+		document.write(title[count]);
+			}
+		
+		for(var count = 0; count < namearray.length / 4; count++) {
+		document.write('<td>' + firstname[count] + '</td>');
+			}
+		document.write('</tr>');
+		
+		document.write('</table></td></tr>');
+		
+		var Query5 = '/books/bookinfo[substring(publication_date,1,4)>"2010"]/title|/books/bookinfo[substring(publication_date,1,4)>"2010"]/authors/authorinfo/name/first_name|/books/bookinfo[substring(publication_date,1,4)>"2010"]/authors/authorinfo/name/last_name|/books/bookinfo[substring(publication_date,1,4)>"2010"]/publisher/publisher_name';
+		
+		document.write('<tr><td><p>Book title, author name, and publisher name of all the books published after 2010<br/></p></td><td>');
+		
+		namelist = xmlDoc.evaluate(Query5, xmlDoc, null, XPathResult.ANY_TYPE, null);
+		namearray = [];
+		
+		while(node = namelist.iterateNext()) {
+			namearray.push(node);
+		}
+		
+		document.write('<table><tr><th>Title</th><th>Author Name</th><th>Publisher</th></tr>');
+		
+		length1 = namearray.length / 4;
+		
+		c = 0;
+		firstname = new Array();
+		lastname = new Array();
+		title = new Array();
+		publ = new Array();
+		for(var count = 0; count < namearray.length; count++) {
+			if(c == 0)
+				lastname.push(namearray[count].childNodes[0].nodeValue);
+			if(c == 1)
+				firstname.push(namearray[count].childNodes[0].nodeValue);
+			if(c == 2)
+				publ.push(namearray[count].childNodes[0].nodeValue);
+			if(c == 3)
+				title.push(namearray[count].childNodes[0].nodeValue);
+			if(count == length1 - 1) {
+				c += 1;
+				length1 = length1 + namearray.length / 4;
+			}
+		}
+		
+		for(var count = 0; count < namearray.length / 4; count++) {
+			document.write('<tr><td>' + lastname[count] + '</td><td>' + publ[count] + ' ' + firstname[count] +  '</td><td>' + title[count] + '</td></tr>');
+		}
+		
+		document.write('</td></tr></table>');
+		document.write('</table>');
+		
+		
+    </script>
+	
+  </body>
+</html>
