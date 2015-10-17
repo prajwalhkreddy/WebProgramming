@@ -65,7 +65,7 @@
                 <xs:element name="p_address">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="p_streetName">
+                            <xs:element name="p_streetname">
                                 <xs:simpleType>
                                     <xs:restriction base="xs:string">
                                         <xs:pattern value="([0-9])+_([a-zA-Z])+" />
@@ -105,46 +105,57 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="book_info">
+    <xs:element name="books">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="title">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:string">
-                            <xs:pattern value="([A-Z])([a-z])*" />
-                            <xs:maxLength value="100" />
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:element>
-                <xs:element name="ISBN">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:string">
-                            <xs:pattern value="([a-zA-Z0-9]{3}-[a-zA-Z0-9]{3}-[a-zA-Z0-9]{4})" />
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:element>
-                <xs:element name="price">
+                <xs:element name="book_info" minOccurs="0" maxOccurs="unbounded">
                     <xs:complexType>
-                        <xs:simpleContent>
-                            <xs:extension base="xs:decimal">
-                                <xs:attribute name="currency">
-                                    <xs:simpleType>
-                                        <xs:restriction base="xs:string"></xs:restriction>
-                                    </xs:simpleType>
-                                </xs:attribute>
-                            </xs:extension>
-                        </xs:simpleContent>
+                        <xs:sequence>
+                            <xs:element name="title">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="([A-Z])([a-z])*" />
+                                        <xs:maxLength value="100" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="ISBN">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="([a-zA-Z0-9]{3}-[a-zA-Z0-9]{3}-[a-zA-Z0-9]{4})" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="price">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:decimal">
+                                            <xs:attribute name="currency">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string"></xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="pub_date">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:date"></xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="time_in_circ">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="[0-9]+Years [0-9][01]*Months ([1][0-9]*|[2][0-9]*|[3][01]*)Days" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element ref="author_info" minOccurs="1"></xs:element>
+                            <xs:element ref="pub_info"></xs:element>
+                        </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="time_in_circ">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:string">
-                            <xs:pattern value="[0-9]+Years [0-9][01]*Months ([1][0-9]*|[2][0-9]*|[3][01]*)Days" />
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:element>
-                <xs:element ref="author_info" minOccurs="1"></xs:element>
-                <xs:element ref="pub_info"></xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
