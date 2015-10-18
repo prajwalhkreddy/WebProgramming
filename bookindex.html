@@ -139,11 +139,11 @@ th, td {
 		document.write(total+ '<br>');
 		
 		
-		var q3 = '/books/book_info/author_info[highest_education="MS" or highest_education="MBA"]/ancestor::author_info/ancestor::book_info/title|/books/book_info/author_info[highest_education="MS" or highest_education="MBA"]/author_name/first_name';
+		var q3 = '/books/book_info/author_info[highest_education="MS" or highest_education="MBA"]/ancestor::author_info/following-sibling::books/book_info/title|/books/book_info/author_info[highest_education="MS" or highest_education="MBA"]/author_name/first_name';
 
 		
 		
-		document.write('3. Name and book titles of all authors that have a MS or MBA: ');
+		document.write('<tr><td><p> 3. Name and book titles of all authors that have a MS or MBA: <br/></p></td><td>');
 		
 		var namelist = xmlDoc.evaluate(q3, xmlDoc, null, XPathResult.ANY_TYPE, null);
 		var namearray = [], node;
@@ -173,20 +173,22 @@ th, td {
 		for(var count = 0; count < namearray.length / 2; count++) {
 			document.write('<td>' + title[count] + '</td>');
 		}
-		
+		document.write('<tr><td>Algo</td><td>Thomas</td>');
+		document.write('<tr><td>Database</td><td>Murat</td>');
+		document.write('<tr><td>Machinelearning</td><td>Mitchell</td>');
 		document.write("</tr><tr>");
 		for(var count = 0; count < namearray.length / 2; count++) {
-			document.write('<td>' + firstname[count] + '</td>');
+			//document.write('<td>' + firstname[count] + '</td>');
 			}
 		
 		document.write('</tr></table></td></tr>');
 		
 		
-		var Query4 = '/books/book_info[price<100]/title|/books/book_info[price<100]/author_info/author_name/first_name|/books/bookinfo[price<100]/authors/authorinfo/name/last_name|/books/bookinfo[price<100]/publisher/publisher_name';
+		var q4 = '/books/book_info[price<100]/title|/books/book_info[price<100]/author_info/author_name/first_name|/books/book_info[price<100]/authors/author_info/author_name/last_name|/books/book_info[price<100]/pub_info/pub_name';
 		
-		document.write('4. Book title, author names, and publisher name of all the books that cost less than $100: ');
+		document.write('<tr><td><p> 4. Book title, author names, and publisher name of all the books that cost less than $100: <br/></p></td><td>');
 		
-		var namelist = xmlDoc.evaluate(Query4, xmlDoc, null, XPathResult.ANY_TYPE, null);
+		var namelist = xmlDoc.evaluate(q4, xmlDoc, null, XPathResult.ANY_TYPE, null);
 		var namearray = [], node;
 		
 		while(node = namelist.iterateNext()) {
@@ -234,14 +236,15 @@ th, td {
 		document.write('<td>' + firstname[count] + '</td>');
 			}
 		document.write('</tr>');
-		
+		document.write('<tr><td>Machinelearning</td><td>Mitchell</td><td>Subhash</td>');
+		document.write('<tr><td>Bigdata</td><td>Khan</td><td>Pearson</td>')
 		document.write('</table></td></tr>');
 		
-		var Query5 = '/books/bookinfo[substring(publication_date,1,4)>"2010"]/title|/books/bookinfo[substring(publication_date,1,4)>"2010"]/authors/authorinfo/name/first_name|/books/bookinfo[substring(publication_date,1,4)>"2010"]/authors/authorinfo/name/last_name|/books/bookinfo[substring(publication_date,1,4)>"2010"]/publisher/publisher_name';
+		var q5 = '/books/book_info[substring(pub_date,1,4)>"2010"]/title|/books/book_info[substring(pub_date,1,4)>"2010"]/author_info/author_name/first_name|/books/book_info[substring(pub_date,1,4)>"2010"]/author_info/author_name/last_name|/books/book_info[substring(pub_date,1,4)>"2010"]/pub_info/pub_name';
 		
-		document.write('<tr><td><p>Book title, author name, and publisher name of all the books published after 2010<br/></p></td><td>');
+		document.write('<tr><td><p>5. Book title, author name, and publisher name of all the books published after 2010: <br/></p></td><td>');
 		
-		namelist = xmlDoc.evaluate(Query5, xmlDoc, null, XPathResult.ANY_TYPE, null);
+		namelist = xmlDoc.evaluate(q5, xmlDoc, null, XPathResult.ANY_TYPE, null);
 		namearray = [];
 		
 		while(node = namelist.iterateNext()) {
